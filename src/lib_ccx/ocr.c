@@ -287,7 +287,8 @@ char* ocr_bitmap(void* arg, png_color *palette,png_byte *alpha, unsigned char* i
 	TessDeleteText(text_out_from_tes);
 
 	// Begin color detection
-	if(ccx_options.dvbcolor && strlen(text_out)>0)
+	// tlt_config.nofontcolor is true when "--nofontcolor" parameter used
+	if(ccx_options.dvbcolor && strlen(text_out)>0 && !tlt_config.nofontcolor)
 	{
 		float h0 = -100;
 		int written_tag = 0;
